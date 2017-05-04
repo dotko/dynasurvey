@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Survey</string>
+
+    <string name="action_reset">Reset</string>
+    <string name="survey_currency_symbol_dollar">$</string>
+    <string name="title_activity_start">DynaSurvey</string>
+</resources>

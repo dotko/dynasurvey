@@ -1,0 +1,393 @@
+{
+  "survey": {
+    "id": "SampleSurvey",
+    "start_screen": "scr_start",
+    "screens": {
+      "scr_start": {
+        "title": "First Screen",
+        "text": "Here we will ask you 4 questions.",
+        "questions": [
+          "name",
+          "age",
+          "job",
+          "zip"
+        ]
+      },
+      "scr_salary": {
+        "title": "${name}'s Salary",
+        "text": "Nice to meet you ${name}\nWe'd like to ask you this one question to see how we can help. ",
+        "questions": [
+          "salary"
+        ]
+      },
+      "takeaway_salary_congrats": {
+        "text": "Congrats ${name}!\n${salary} is quite a lot!\n\nLooks like you're doing really well for your age!"
+      },
+      "takeaway_salary_sorry": {
+        "text": "We're sorry ${name} unfortunately we won't be able to help you.\nYou make too little money."
+      },
+      "scr_worries": {
+        "title": "Financial Worry",
+        "questions": [
+          "worries"
+        ]
+      },
+      "scr_retirement": {
+        "title": "Saving for Retirement",
+        "questions": [
+          "savings",
+          "retirement"
+        ]
+      },
+      "scr_debt": {
+        "title": "Paying off Debt",
+        "questions": [
+          "debt"
+        ]
+      },
+      "scr_house": {
+        "title": "Buying a home in ${zip}",
+        "questions": [
+          "home_price",
+          "savings"
+        ]
+      }
+    },
+    "questions": {
+      "name": {
+        "type": "TEXT",
+        "title": "What's your name?",
+        "validation_rules": [
+          "name_is_valid"
+        ],
+        "value": "Ondrej"
+      },
+      "age": {
+        "type": "NUMBER",
+        "title": "Nice to meet you ${name}!\nHow old are you?"
+      },
+      "job": {
+        "title": "What's your job title ${name}?",
+        "type": "TEXT"
+      },
+      "zip": {
+        "title": "And your zipcode?",
+        "type": "TEXT",
+        "validation_rules": [
+          "zip_is_valid"
+        ],
+        "value": "ABC"
+      },
+      "salary": {
+        "title": "What is your monthly salary?",
+        "type": "CURRENCY",
+        "validation_rules": [
+          "typed_in_some_salary"
+        ]
+      },
+      "worries": {
+        "type": "MULTISELECT",
+        "title": "What do you worry about the most ${name}?",
+        "options": [
+          {
+            "id": "worry.retirement",
+            "title": "Saving for retirement"
+          },
+          {
+            "id": "worry.debt",
+            "title": "Paying off debt"
+          },
+          {
+            "id": "worry.house",
+            "title": "Buying a Home"
+          },
+          {
+            "id": "worry.budget",
+            "title": "Budgeting Better"
+          },
+          {
+            "id": "worry.investment",
+            "title": "Investing"
+          },
+          {
+            "id": "worry.salary",
+            "title": "Earning More"
+          }
+        ],
+        "validation_rules": [
+          "worries_are_valid"
+        ]
+      },
+      "savings": {
+        "type": "CURRENCY",
+        "title": "How much have you saved in your ${age} years?"
+      },
+      "retirement": {
+        "type": "SELECT",
+        "title": "When would you like to retire?",
+        "value": "retirement.20",
+        "options": [
+          {
+            "id": "retirement.this_year",
+            "title": "I'd like to retire this year"
+          },
+          {
+            "id": "retirement.5",
+            "title": "I plan to retire in the next 5 years"
+          },
+          {
+            "id": "retirement.10",
+            "title": "10 years from now I'd like to be retired"
+          },
+          {
+            "id": "retirement.20",
+            "title": "I have time and don't plan to retire in the next two decades"
+          }
+        ],
+        "validation_rules": [
+          "retirement_is_valid"
+        ]
+      },
+      "debt": {
+        "type": "SELECT",
+        "title": "What is your debt range?",
+        "options": [
+          {
+            "id": "debt.tiny",
+            "title": "Less than $500"
+          },
+          {
+            "id": "debt.small",
+            "title": "Between $500 and $2500"
+          },
+          {
+            "id": "debt.medium",
+            "title": "Somewhere between $2500 and $10000"
+          },
+          {
+            "id": "debt.large",
+            "title": "More than $10000"
+          }
+        ]
+      },
+      "home_price": {
+        "type": "CURRENCY",
+        "title": "How much is the home you want to buy?"
+      }
+    },
+    "checks": {
+      "pick_1": {
+        "type": "SEL_COUNT_EQ",
+        "check_value": "1"
+      },
+      "pick_over_0": {
+        "type": "SEL_COUNT_GT",
+        "check_value": "0"
+      },
+      "pick_under_4": {
+        "type": "SEL_COUNT_LT",
+        "check_value": "4"
+      },
+      "text_over_1": {
+        "type": "TXT_LEN_GT",
+        "check_value": "1"
+      },
+      "text_over_4": {
+        "type": "TXT_LEN_GT",
+        "check_value": "4"
+      },
+      "text_under_7": {
+        "type": "TXT_LEN_LT",
+        "check_value": "7"
+      },
+      "text_under_20": {
+        "type": "TXT_LEN_LT",
+        "check_value": "20"
+      },
+      "number_over_10000": {
+        "type": "NUM_GT",
+        "check_value": "10000"
+      },
+      "number_under_1000": {
+        "type": "NUM_LT",
+        "check_value": "1000"
+      },
+      "number_under_30": {
+        "type": "NUM_LT",
+        "check_value": "31"
+      },
+      "worry_retirement_selected": {
+        "type": "SEL_HAS",
+        "check_value": "worry.retirement"
+      },
+      "worry_debt_selected": {
+        "type": "SEL_HAS",
+        "check_value": "worry.debt"
+      },
+      "worry_house_selected": {
+        "type": "SEL_HAS",
+        "check_value": "worry.house"
+      }
+    },
+    "rules": {
+      "name_is_valid": {
+        "subject": "name",
+        "checks": [
+          "text_over_1",
+          "text_under_20"
+        ],
+        "err_msg": "Name has to be between 2 and 19 characters long."
+      },
+      "typed_in_some_salary": {
+        "subject": "salary",
+        "checks": [
+          "text_over_1"
+        ],
+        "err_msg": "Come on ${name}, I am sure you're making something :)"
+      },
+      "earns_over_10k": {
+        "subject": "salary",
+        "checks": [
+          "number_over_10000"
+        ]
+      },
+      "earns_under_1k": {
+        "subject": "salary",
+        "checks": [
+          "number_under_1000"
+        ]
+      },
+      "is_under_30_years": {
+        "subject": "age",
+        "checks": [
+          "number_under_30"
+        ]
+      },
+      "zip_is_valid": {
+        "subject": "zip",
+        "checks": [
+          "text_over_4",
+          "text_under_7"
+        ],
+        "err_msg": "Zip code has to be 5 or 6 letters long."
+      },
+      "worries_are_valid": {
+        "subject": "worries",
+        "checks": [
+          "pick_over_0",
+          "pick_under_4"
+        ],
+        "err_msg": "Please select at least one, but no more than 3 worries."
+      },
+      "worries_about_retirement": {
+        "subject": "worries",
+        "checks": [
+          "worry_retirement_selected"
+        ]
+      },
+      "worries_about_debt": {
+        "subject": "worries",
+        "checks": [
+          "worry_debt_selected"
+        ]
+      },
+      "worries_about_house": {
+        "subject": "worries",
+        "checks": [
+          "worry_house_selected"
+        ]
+      },
+      "retirement_is_valid": {
+        "subject": "retirement",
+        "checks": [
+          "pick_1"
+        ]
+      }
+    },
+    "transitions": {
+      "scr_start": {
+        "destinations": [
+          {
+            "target": "scr_salary"
+          }
+        ]
+      },
+      "scr_salary": {
+        "destinations": [
+          {
+            "target": "takeaway_salary_congrats",
+            "rules": [
+              "earns_over_10k",
+              "is_under_30_years"
+            ]
+          },
+          {
+            "target": "takeaway_salary_sorry",
+            "rules": [
+              "earns_under_1k"
+            ]
+          },
+          {
+            "target": "scr_worries"
+          }
+        ]
+      },
+      "takeaway_salary_congrats": {
+        "destinations": [
+          {
+            "target": "scr_worries"
+          }
+        ]
+      },
+      "scr_worries": {
+        "destinations": [
+          {
+            "target": "scr_retirement",
+            "rules": [
+              "worries_about_retirement"
+            ]
+          },
+          {
+            "target": "scr_debt",
+            "rules": [
+              "worries_about_debt"
+            ]
+          },
+          {
+            "target": "scr_house",
+            "rules": [
+              "worries_about_house"
+            ]
+          }
+        ]
+      },
+      "scr_retirement": {
+        "destinations": [
+          {
+            "target": "scr_debt",
+            "rules": [
+              "worries_about_debt"
+            ]
+          },
+          {
+            "target": "scr_house",
+            "rules": [
+              "worries_about_house"
+            ]
+          }
+        ]
+      },
+      "scr_debt": {
+        "destinations": [
+          {
+            "target": "scr_house",
+            "rules": [
+              "worries_about_house"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
+
